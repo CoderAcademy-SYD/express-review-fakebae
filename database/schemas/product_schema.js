@@ -1,4 +1,5 @@
 const { Schema } = require("mongoose");
+const ReviewSchema = require("./review_schema");
 
 const ProductSchema = new Schema({
     name: {
@@ -13,7 +14,8 @@ const ProductSchema = new Schema({
         min: 0,
         required: true,
         default: 0
-    }
+    },
+    reviews: [ReviewSchema]
 });
 
 module.exports = ProductSchema;

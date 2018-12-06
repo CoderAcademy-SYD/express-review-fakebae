@@ -7,3 +7,19 @@
 
 <h3>Price</h3>
 <p>{{ product.price }}</p>
+
+<a href="/products/{{ product._id }}?_method=DELETE">Delete</a>
+
+<form method="post" action="/products/{{ product._id}}/reviews">
+    <div>
+        <label>Author</label>
+        <input type="text" name="author" />
+    </div>
+    <div>
+        <label>How was it?</label>
+        <textarea name="content"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="create review" />
+    </div>
+</form>

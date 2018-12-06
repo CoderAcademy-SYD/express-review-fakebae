@@ -23,12 +23,19 @@ async function create(req, res) {
     res.redirect(`/products/${product._id}`);
 }
 
-function update(req, res) {
-    res.send("show form to make new product");
+async function update(req, res) {
+    const { id } = req.params;
+    const { name, categories, price } = req.body;
+    const product = await ProductModel.findByIdAndUpdate(id, {name, categories, price});
+
+    res.redirect(`/products/${product._id}`);
 }
 
-function destroy(req, res) {
-    res.send("show form to make new product");
+async function destroy(req, res) {
+    const { id } = req.params;
+    await ProductModel.findByIdAndRemove(id);
+
+    res.redirect("/products");
 }
 
 async function edit(req, res) {

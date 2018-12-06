@@ -4,5 +4,6 @@
         <p>Name: {{ this.name }}</p>
         <p>Categories: {{#each this.categories}} {{ this }} {{/each}}</p>
         <p>Price: {{ this.price }}</p>
+        <a href="/products/{{ this._id }}">View</a>
     </div>
 {{/each}}

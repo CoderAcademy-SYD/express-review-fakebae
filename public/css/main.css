@@ -1,3 +1,7 @@
+label {
+    display: block;
+}
+
 .wrap{
     width: 100%;
     border-bottom: 2px solid black;

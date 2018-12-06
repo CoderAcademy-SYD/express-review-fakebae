@@ -10,11 +10,14 @@ function show(req, res) {
 }
 
 function make(req, res) {
-    res.send("show form to make new product");
+    res.render("products/make");
 }
 
-function create(req, res) {
-    res.send("show form to make new product");
+async function create(req, res) {
+    const { name, categories, price } = req.body;
+    const product = await ProductModel.create({ name, categories, price });
+
+    res.redirect(`/products/${product._id}`);
 }
 
 function update(req, res) {

@@ -1,6 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const ProductController = require('./../controllers/product_controller');
+const ProductModel = require('./../database/models/product_model');
+
+router.use("/products/:id", async (req, res, next) => {    
+    if (req.params.id) {
+        let product = await ProductModel.findById(req.params.id);
+        req.product = product;
+    }
+
+    next();
+});
 
 router.get("/products", ProductController.index);
 

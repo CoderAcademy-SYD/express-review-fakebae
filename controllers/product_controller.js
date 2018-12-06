@@ -5,8 +5,8 @@ async function index(req, res) {
     res.render("products/index", { products });
 }
 
-function show(req, res) {
-    res.send("show single product");
+async function show(req, res) {
+    res.render("products/show", { product: req.product });
 }
 
 function make(req, res) {
@@ -28,8 +28,12 @@ function destroy(req, res) {
     res.send("show form to make new product");
 }
 
-function edit(req, res) {
-    res.send("show form to make new product");
+async function edit(req, res) {
+    console.log(req.product);
+    const { id } = req.params;
+    const product = await ProductModel.findById(id);
+
+    res.render("products/edit", { product });
 }
 
 module.exports = {

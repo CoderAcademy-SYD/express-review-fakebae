@@ -7,4 +7,6 @@ app.set("view engine", "handlebars");
 
 app.use(require("./routes"));
 
+app.use(express.static("public"));
+
 module.exports = app;

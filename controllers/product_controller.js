@@ -1,5 +1,8 @@
-function index(req, res) {
-    res.send("show all products");
+const ProductModel = require("./../database/models/product_model");
+
+async function index(req, res) {
+    const products = await ProductModel.find();
+    res.render("products/index", { products });
 }
 
 function show(req, res) {

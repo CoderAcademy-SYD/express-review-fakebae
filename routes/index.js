@@ -21,6 +21,6 @@ router.get("/products/:id/edit", ProductController.edit);
 
 router.post("/products/:id/reviews", ReviewController.create);
 
-router.delete("/products/:id/reviews", ReviewController.destroy);
+router.delete("/products/:productId/reviews/:id", ReviewController.destroy);
 
 module.exports = router;

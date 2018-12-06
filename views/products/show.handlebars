@@ -23,3 +23,12 @@
         <input type="submit" value="create review" />
     </div>
 </form>
+
+<h4>Reviews</h4>
+{{#each product.reviews}}
+    <div class="wrap">
+        <p>Author: {{ this.author }}</p>
+        <p>{{ this.content }}</p>
+        <a href="/products/{{ ../product._id }}/reviews/{{ this._id }}?_method=DELETE">Delete</a>
+    </div>
+{{/each}}

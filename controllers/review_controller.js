@@ -1,11 +1,22 @@
 const ProductModel = require("./../database/models/product_model");
 
-function create(req, res) {
+async function create(req, res) {
+    const { id } = req.params;
+    const { author, content } = req.body;
+    const product = await ProductModel.findById(id);
+    product.reviews.push({ author, content });
+    await product.save();
 
+    res.redirect(`/products/${product._id}`);
 } 
 
-function destroy(req, res) {
+async function destroy(req, res) {
+    const { productId, id } = req.params;
+    const product = await ProductModel.findById(productId);
+    product.reviews.id(id).remove();
+    await product.save();
 
+    res.redirect(`/products/${product._id}`);
 }
 
 module.exports = {

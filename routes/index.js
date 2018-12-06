@@ -3,6 +3,8 @@ const router = express.Router();
 const ProductController = require('./../controllers/product_controller');
 const ReviewController = require("./../controllers/review_controller");
 
+router.get("/reviews", ReviewController.index);
+
 router.get("/products", ProductController.index);
 
 router.post("/products", ProductController.create);

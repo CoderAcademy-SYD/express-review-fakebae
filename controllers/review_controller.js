@@ -5,7 +5,7 @@ async function index(req, res) {
         { $unwind: "$reviews" },
         {$group:{_id:null, reviews: {$push : "$reviews"} }},
     ]);
-    const reviews = results[0].reviews;
+    const reviews = results[0] ? results[0].reviews : [];
 
      res.json(reviews);
 }

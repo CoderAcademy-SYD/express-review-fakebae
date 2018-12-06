@@ -6,7 +6,10 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    res.render("products/show", { product: req.product });
+    const { id } = req.params;
+    const product = await ProductModel.findById(id);
+
+    res.render("products/show", { product });
 }
 
 function make(req, res) {
@@ -29,7 +32,6 @@ function destroy(req, res) {
 }
 
 async function edit(req, res) {
-    console.log(req.product);
     const { id } = req.params;
     const product = await ProductModel.findById(id);
 
